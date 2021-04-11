@@ -304,6 +304,10 @@ void farming(LinkedList& seeds, LinkedList& plants, PlantList& farmPlants)
                         plants.set_quantity("Sunflower", harvestNum, "in");
                         temp = farmPlants.getHead();
                     }
+                    else
+                    {
+                        temp = temp->next;
+                    }
                 }
                 else if (temp->plantName == "Carrot")
                 {
@@ -312,6 +316,10 @@ void farming(LinkedList& seeds, LinkedList& plants, PlantList& farmPlants)
                         harvestNum = farmPlants.remove("Carrot", 3);
                         plants.set_quantity("Carrot", harvestNum, "in");
                         temp = farmPlants.getHead();
+                    }
+                    else
+                    {
+                        temp = temp->next;
                     }
                 }
                 else if (temp->plantName == "Watermelon")
@@ -322,10 +330,10 @@ void farming(LinkedList& seeds, LinkedList& plants, PlantList& farmPlants)
                         plants.set_quantity("Watermelon", harvestNum, "in");
                         temp = farmPlants.getHead();
                     }
-                } 
-                else
-                {
-                    temp = temp->next;
+                    else
+                    {
+                        temp = temp->next;
+                    }
                 }
             }
         }
@@ -383,14 +391,15 @@ void fishing(int& bait, LinkedList& fish)
 void DonCrook(bool& paid, LinkedList& seeds, LinkedList& plants, int& bait, LinkedList& fish, LinkedList& furniture, int& houseCapacity, int& chimes)
 {//buying
     string input = "";
+    string dummy = "";
     int number;
+    clearScreen();
     cout << "Visiting Don Crook" << endl;
     cout << "Don Crook: Hello my little friend, is there anything you need?" << endl;
 
     while (input != "q")
     {
         number = 0;
-        clearScreen();
         cout << "You have " << chimes << " chimes" << endl;
         cout << "b - Buy items from Don Crook" << endl;
         cout << "s - Sell items to Don Crook" << endl;
@@ -781,6 +790,9 @@ void DonCrook(bool& paid, LinkedList& seeds, LinkedList& plants, int& bait, Link
                 cout << "What else do you need?" << endl;
             }
         }
+        cout << "Type any character to continue" << endl;
+        cin >> dummy;
+        clearScreen();
     }
     return;
 }
